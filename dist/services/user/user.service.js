@@ -22,6 +22,7 @@ let UsersService = class UsersService {
         this.userRepository = userRepository;
     }
     findUsers() {
+        return this.userRepository.find();
     }
     createUser(userDetails) {
         const newUser = this.userRepository.create({

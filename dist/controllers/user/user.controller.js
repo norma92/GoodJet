@@ -20,10 +20,15 @@ let UsersController = class UsersController {
     constructor(userService) {
         this.userService = userService;
     }
-    getUsers() { }
+    async getUsers() {
+        const users = await this.userService.findUsers();
+        return users;
+    }
     createUser(createUserDto) {
-        if (createUserDto.password == createUserDto.conferma_password)
+        if (createUserDto.password == createUserDto.conferma_password) {
             this.userService.createUser(createUserDto);
+            return createUserDto;
+        }
         console.log('non è stato possibile registrare l\'utente perchè le password non corrispondono');
     }
 };
@@ -32,7 +37,7 @@ __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UsersController.prototype, "getUsers", null);
 __decorate([
     (0, common_1.Post)(),
