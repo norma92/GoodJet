@@ -9,7 +9,9 @@ export class SpeseService {
 
     constructor(@InjectRepository(Spesa) private spesaRepository: Repository<Spesa>) {}
 
-    findUsers() {}
+    findSpese() {
+        return this.spesaRepository.find();
+    }
 
     /**
      * 
@@ -17,8 +19,10 @@ export class SpeseService {
      * @returns 
      */
     createSpesa(spesaDetails: CreateSpesaParams) {
+
         const newSpesa = this.spesaRepository.create({ ...spesaDetails });
         return this.spesaRepository.save(newSpesa);
+
     }
 
     updateUser() {}

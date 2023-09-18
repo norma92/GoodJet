@@ -21,7 +21,9 @@ let SpeseService = class SpeseService {
     constructor(spesaRepository) {
         this.spesaRepository = spesaRepository;
     }
-    findUsers() { }
+    findSpese() {
+        return this.spesaRepository.find();
+    }
     createSpesa(spesaDetails) {
         const newSpesa = this.spesaRepository.create({ ...spesaDetails });
         return this.spesaRepository.save(newSpesa);

@@ -6,11 +6,28 @@ import { SpeseService } from 'src/services/spesa/spesa.service';
 export class SpeseController {
 
     constructor(private spesaService: SpeseService) {}
-    @Get()
-    getUsers(){}
 
+    /**
+     * 
+     */
+    @Get()
+    async getSpese(){
+
+        const spese = await this.spesaService.findSpese();
+        return spese;
+    }
+
+    /**
+     * la funzione crea un nuovo record che verrà inserito nella tabella Spesa
+     * 
+     * La chiamata è una Post,
+     * alla quale si passa un elemento di tipo CreateSpesaDto
+     * praticamente corrisponde al JSON inserito nel body di postman
+     * 
+     * @param {CreateSpesaDto} createSpesaDto - oggetto che verrà inserito nella tabella Spesa
+     */
     @Post()
-    createUser(@Body() createSpesaDto: CreateSpesaDto){
+    createSpesa(@Body() createSpesaDto: CreateSpesaDto){
         this.spesaService.createSpesa(createSpesaDto);
     }
 }

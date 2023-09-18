@@ -20,8 +20,11 @@ let SpeseController = class SpeseController {
     constructor(spesaService) {
         this.spesaService = spesaService;
     }
-    getUsers() { }
-    createUser(createSpesaDto) {
+    async getSpese() {
+        const spese = await this.spesaService.findSpese();
+        return spese;
+    }
+    createSpesa(createSpesaDto) {
         this.spesaService.createSpesa(createSpesaDto);
     }
 };
@@ -30,15 +33,15 @@ __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], SpeseController.prototype, "getUsers", null);
+    __metadata("design:returntype", Promise)
+], SpeseController.prototype, "getSpese", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CreateSpese_dto_1.CreateSpesaDto]),
     __metadata("design:returntype", void 0)
-], SpeseController.prototype, "createUser", null);
+], SpeseController.prototype, "createSpesa", null);
 exports.SpeseController = SpeseController = __decorate([
     (0, common_1.Controller)('spese'),
     __metadata("design:paramtypes", [spesa_service_1.SpeseService])

@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 export declare class SpeseService {
     private spesaRepository;
     constructor(spesaRepository: Repository<Spesa>);
-    findUsers(): void;
+    findSpese(): Promise<Spesa[]>;
     createSpesa(spesaDetails: CreateSpesaParams): Promise<Spesa>;
     updateUser(): void;
     deleteUser(): void;

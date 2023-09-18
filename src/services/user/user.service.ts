@@ -14,11 +14,13 @@ export class UsersService {
     }
 
     createUser(userDetails: CreateUserParams) {
+
         const newUser = this.userRepository.create({ 
             username: userDetails.username,
             password: userDetails.password
         });
         return this.userRepository.save(newUser);
+        
     }
 
     updateUser() {}
